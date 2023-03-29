@@ -44,36 +44,36 @@ const Shop = () => {
     //   product.quantity = 1;
     //   newCart = [...cart, product];
     // };
-    // else {
-    //   exists.quantity = exists.quantity + 1;
-    //   const remaining = cart.filter(pd => pd.id !== product.id);
-    //   newCart = [...remaining, exists];
+    //   else {
+    //     exists.quantity = exists.quantity + 1;
+    //     const remaining = cart.filter(pd => pd.id !== product.id);
+    //     newCart = [...remaining, exists];
+    // };
+
+
+    setCart(newCart);
+    addToDb(product.id);
   };
 
-
-  setCart(newCart);
-  addToDb(product.id);
-};
-
-return (
-  <div className='shop-container'>
-    <div className='products-container'>
-      {
-        products.map(product => (
-          <Product
-            key={product.id}
-            product={product}
-            handleAddToCart={handleAddToCart}
-          >
-          </Product>
-        ))
-      }
+  return (
+    <div className='shop-container'>
+      <div className='products-container'>
+        {
+          products.map(product => (
+            <Product
+              key={product.id}
+              product={product}
+              handleAddToCart={handleAddToCart}
+            >
+            </Product>
+          ))
+        }
+      </div>
+      <div className='cart-container'>
+        <Cart cart={cart}></Cart>
+      </div>
     </div>
-    <div className='cart-container'>
-      <Cart cart={cart}></Cart>
-    </div>
-  </div>
-);
+  );
 };
 
 export default Shop;
